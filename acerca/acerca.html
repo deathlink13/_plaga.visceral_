@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acerca – PLAGA VISCERAL</title>
+  <meta name="description" content="Plaga Visceral: tatuajes que infectan el alma. Flash, Fine Line y diseños únicos desde la piel hacia el caos.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Metal+Mania&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    *, ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      line-height: 1.6;
+      color: #fff;
+      background: #000;
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+    .text-center { text-align: center; }
+    .d-flex { display: flex; }
+    .justify-between { justify-content: space-between; }
+    .align-center { align-items: center; }
+    .flex-wrap { flex-wrap: wrap; }
+    .gap-1 { gap: 1rem; }
+    .mb-2 { margin-bottom: 1rem; }
+    .mb-3 { margin-bottom: 1.5rem; }
+    img { max-width: 100%; height: auto; }
+    a { text-decoration: none; color: inherit; }
+
+    h1, h2, h3, h4, h5, h6, .btn, nav a, .social-icon, .copyright, footer p, .about-text p, .section-title {
+      font-family: 'Metal Mania', cursive;
+    }
+
+    header { padding: 1rem 0; border-bottom: 2px solid #ff003c; }
+    .header-top { justify-content: space-between; }
+    .social-icons { display: flex; gap: 0.8rem; }
+    .social-icon {
+      display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px; border-radius: 10%;
+      background: #69727d; color: white;
+    }
+    .social-icon:hover { transform: scale(1.1); }
+    .social-icon.instagram { background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); }
+
+    nav ul { list-style: none; display: flex; gap: 1.5rem; margin-top: 1rem; justify-content: center; }
+    nav a {
+      font-weight: bold;
+      padding: 0.4rem 0.8rem;
+      color: #fff;
+      font-size: 1.2rem;
+    }
+    nav a:hover, nav a.active {
+      text-decoration: underline;
+      color: #ff003c;
+    }
+
+    .about-section { padding: 3rem 0; background: #000; }
+    .about-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .section-title {
+      font-size: 2.6rem;
+      margin-bottom: 2rem;
+      color: #ff003c;
+      text-align: center;
+      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000;
+    }
+
+    .about-text p {
+      font-size: 1.6rem;
+      line-height: 1.5;
+      margin-bottom: 1.8rem;
+      text-align: center;
+      text-shadow:
+        2px 2px 0 #000,
+        -2px -2px 0 #000,
+        3px -3px 0 #333;
+    }
+
+    .highlight {
+      color: #ff003c;
+      text-shadow: 1px 1px 0 #000;
+    }
+
+    .instagram-cta {
+      text-align: center;
+      margin: 3rem 0;
+      padding: 1.5rem;
+      background: rgba(255, 0, 60, 0.1);
+      border: 2px dashed #ff003c;
+      border-radius: 12px;
+    }
+    .instagram-cta h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ff003c;
+      text-shadow: 1px 1px 0 #000;
+    }
+    .instagram-cta p {
+      font-size: 1.4rem;
+      color: #ff003c;
+      text-shadow: 1px 1px 0 #000;
+    }
+    .instagram-link {
+      color: #f0f;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+    footer { background: #000; padding: 2.5rem 0 1.5rem; border-top: 1px solid #333; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    footer h3 {
+      margin-bottom: 0.8rem;
+      font-size: 1.4rem;
+      color: #ff003c;
+      text-shadow: 1px 1px 0 #000;
+    }
+    footer p, footer a {
+      line-height: 1.7;
+      color: #ddd;
+      font-size: 1.1rem;
+    }
+    .copyright {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .section-title { font-size: 2rem; }
+      .about-text p { font-size: 1.3rem; }
+      .instagram-cta h3 { font-size: 1.6rem; }
+      .instagram-cta p { font-size: 1.2rem; }
+      .header-top { flex-direction: column; gap: 1rem; text-align: center; }
+      nav ul { flex-direction: column; align-items: center; gap: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="d-flex justify-between align-center flex-wrap header-top">
+        <img src="../wp-content/uploads/2023/08/bandera-mexico-1.png" alt="México" width="50">
+        <h2 style="font-family: 'Metal Mania', cursive; color: #ff003c; margin: 0;">PLAGA VISCERAL</h2>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/_plaga.visceral_/" target="_blank" class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="../index.html">home</a></li>
+          <li><a href="#" class="active">Acerca</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenido "Acerca" -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <h2 class="section-title">Plaga Visceral: la infección sagrada</h2>
+
+        <div class="about-text">
+          <p>Bienvenido a <span class="highlight">Plaga Visceral</span>, donde los tatuajes no se diseñan… se incuban. Aquí la piel es un cultivo, la aguja una lanceta de caos, y cada trazo una mutación que corrompe lo mundano para dar paso a lo eterno.</p>
+
+          <p>No hacemos arte decorativo. Creamos <strong>cicatrices con propósito</strong>, marcas que nacen del instinto, del flash espontáneo, de la línea fina que se arrastra como una larva bajo la epidermis. Si buscas algo que te defina sin pedir permiso, que te duela con significado y que nazca en minutos… has llegado al foco de infección correcto.</p>
+
+          <p><strong>Flash. Fine Line. Caos controlado.</strong><br>
+          Trabajo rápido, preciso, visceral. Sin estudios, sin citas, sin formalidades. Solo tú, la tinta y la decisión de dejar que algo salvaje se adhiera a ti para siempre. Mis diseños nacen del folclore distorsionado, la anatomía grotesca, lo sagrado putrefacto y lo bello en descomposición.</p>
+
+          <p>Si quieres un tatuaje “lindo”, busca en otro lado. Pero si estás listo para portar una plaga que te identifique como lo que eres —imperfecto, crudo, auténtico—, entonces tu piel ya me está llamando.</p>
+
+          <p>En <span class="highlight">Plaga Visceral</span>, no te tatuamos. Te infectamos con algo que nunca sanará… y que jamás querrás que sane.</p>
+
+          <p>¿Te atreves a incubarte?<br>
+          <strong>La plaga te espera.</strong></p>
+        </div>
+
+        <!-- CTA Instagram -->
+        <div class="instagram-cta">
+          <h3>¿CÓMO CONTACTARME?</h3>
+          <p>Revisa mi último post para detalles y flashes disponibles → <br>
+          <a href="https://www.instagram.com/p/C3N1TCaOll0/" class="instagram-link" target="_blank">@_plaga.visceral_</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Instagram</h3>
+          <p>Todo mi trabajo está en <br><a href="https://www.instagram.com/_plaga.visceral_/" target="_blank">@_plaga.visceral_</a></p>
+        </div>
+        <div>
+          <h3>Servicios</h3>
+          <p>Flash • Fine Line •<br>Walk-in • Diseños únicos</p>
+        </div>
+        <div>
+          <h3>Filosofía</h3>
+          <p>Sin estudio fijo.<br>Sin citas.<br>Solo tinta y voluntad.</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 by Plaga Visceral
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
