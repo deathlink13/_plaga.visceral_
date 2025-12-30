@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PLAGA VISCERAL - Próximamente</title>
+  <meta name="description" content="Próximamente en Plaga Visceral.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700&family=Metal+Mania&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    *, ::before, ::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* —— FONDO MATRIX —— */
+    #matrix-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      background: #000;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 500;
+      line-height: 1.7;
+      color: #0bff00;
+      background: #000;
+      overflow-x: hidden;
+      padding-top: 90px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .text-center { text-align: center; }
+    .d-flex { display: flex; }
+    .justify-between { justify-content: space-between; }
+    .align-center { align-items: center; }
+    .flex-wrap { flex-wrap: wrap; }
+    .gap-1 { gap: 1rem; }
+    img { max-width: 100%; height: auto; }
+    a { text-decoration: none; color: inherit; }
+
+    /* —— Solo títulos y elementos destacados usan Metal Mania —— */
+    h1, h2, h3, h4, h5, h6,
+    .zone-label,
+    .btn,
+    nav a,
+    .social-icon {
+      font-family: 'Metal Mania', cursive;
+    }
+
+    /* —— Tamaños de fuente —— */
+    h1 { font-size: 3.4rem; }
+    h2 { font-size: 2.8rem; }
+    .zone-label { font-size: 1.8rem; }
+    .btn {
+      font-size: 1.6rem;
+      padding: 1rem 2.4rem;
+      font-weight: 700;
+    }
+    .hero-text p {
+      font-size: 1.7rem;
+      font-weight: 500;
+    }
+
+    /* —— HEADER —— */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 0;
+      border-bottom: 2px solid #0bff00;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+    header.scrolled {
+      padding: 8px 0;
+      background: rgba(0,0,0,0.95);
+    }
+    .header-top {
+      justify-content: space-between;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10%;
+      background: #69727d;
+      color: white;
+    }
+    .social-icon:hover {
+      transform: scale(1.1);
+    }
+    .social-icon.instagram {
+      background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    }
+
+    /* —— Menú hamburguesa —— */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 32px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: #0bff00;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    nav#mainNav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.8rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    nav a {
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      color: #0bff00;
+      font-size: 1.5rem;
+    }
+    nav a:hover, nav a.active {
+      text-decoration: underline;
+      color: #0bff00;
+    }
+
+    /* === PRÓXIMAMENTE === */
+    .coming-soon {
+      padding: 4rem 0;
+      background: rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .coming-soon img {
+      max-width: 90vw;
+      max-height: 80vh;
+      object-fit: contain;
+      border: 2px solid #0bff00;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    }
+
+    .coming-soon h1 {
+      color: #0bff00;
+      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .coming-soon p {
+      color: #ddd;
+      font-size: 1.4rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+    }
+
+    /* === FOOTER === */
+    footer {
+      background: rgba(0,0,0,0.8);
+      padding: 2.5rem 0 1.5rem;
+      border-top: 1px solid #333;
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    footer h3 {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      color: #0bff00;
+    }
+
+    footer p, footer a {
+      line-height: 1.8;
+      color: #ddd;
+      font-size: 1.3rem;
+    }
+
+    .copyright {
+      text-align: center;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      body { padding-top: 80px; }
+      h1 { font-size: 2.6rem; }
+      h2 { font-size: 2.2rem; }
+      .coming-soon h1 { font-size: 2.4rem; }
+      .coming-soon p { font-size: 1.3rem; }
+      .coming-soon img { max-height: 70vh; }
+
+      /* Menú hamburguesa */
+      .hamburger { display: flex; }
+      nav#mainNav {
+        display: none;
+        width: 100%;
+        background: rgba(0,0,0,0.9);
+        padding: 1rem 0;
+        border-top: 1px solid #0bff00;
+        margin-top: 1rem;
+        text-align: center;
+      }
+      nav#mainNav.active { display: block; }
+      nav#mainNav ul {
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: center;
+      }
+      nav a {
+        font-size: 1.6rem;
+        padding: 0.7rem 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2.1rem; }
+      .coming-soon h1 { font-size: 2rem; }
+      .coming-soon p { font-size: 1.2rem; }
+      .coming-soon img { max-height: 60vh; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fondo Matrix -->
+  <canvas id="matrix-bg"></canvas>
+
+  <!-- Audio de fondo -->
+  <audio id="bg-audio" loop>
+    <source src="audio/cancion.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Header -->
+  <header id="mainHeader">
+    <div class="container">
+      <div class="d-flex justify-between align-center flex-wrap header-top">
+        <img src="wp-content/uploads/2023/08/bandera-mexico-1.png" alt="México" width="55">
+        <img src="img/logo.png" alt="Plaga Visceral" style="height: 60px; object-fit: contain;">
+        <div class="social-icons">
+          <a href="https://www.instagram.com/_plaga.visceral_" target="_blank" class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menú">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="index.html">home</a></li>
+          <li><a href="acerca/acerca.html">Acerca</a></li>
+          <li><a href="proximamente.html" class="active">Próximamente</a></li> 
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenido Próximamente -->
+  <section class="coming-soon">
+    <img src="img/proximamente.jpg" alt="Próximamente - Plaga Visceral">
+    <h1>PRÓXIMAMENTE</h1>
+    <p>Algo oscuro y poderoso se avecina. Mantente atento a nuestras redes sociales para el anuncio oficial.</p>
+    <a href="https://www.instagram.com/_plaga.visceral_" target="_blank" class="btn">SÍGUEME EN INSTAGRAM</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Contacto</h3>
+          <div class="social-icons" style="justify-content: flex-start; margin-top: 0.5rem;">
+            <a href="https://www.instagram.com/_plaga.visceral_" target="_blank" class="social-icon instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3>Horario</h3>
+          <p>Atención por WhatsApp<br>Sin cita previa</p>
+        </div>
+        <div>
+          <h3>Servicios</h3>
+          <p>Flash, Fine Line,<br>Tatuajes rápidos y únicos</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 by Plaga Visceral
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // === MATRIX ===
+    const canvas = document.getElementById('matrix-bg');
+    const ctx = canvas.getContext('2d');
+    let fontSize = 16, columns, drops;
+    const codeString = `PLAGA\nVIS\nceral\nINFECTA\nALMA\nCAOS\nPUTREFACTO\n`;
+    const codeChars = codeString.split('');
+
+    function resizeMatrix() {
+      canvas.width = window.innerWidth;
+      canvas.height = document.body.scrollHeight;
+      columns = Math.floor(canvas.width / fontSize);
+      drops = Array(columns).fill(1);
+    }
+
+    window.addEventListener('resize', resizeMatrix);
+    resizeMatrix();
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00ff00';
+      ctx.font = fontSize + 'px monospace';
+      for (let i = 0; i < columns; i++) {
+        const text = codeChars[Math.floor(Math.random() * codeChars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+      requestAnimationFrame(drawMatrix);
+    }
+    drawMatrix();
+
+    // === AJUSTE DINÁMICO DEL PADDING-TOP DEL BODY ===
+    function updateBodyPadding() {
+      const header = document.getElementById('mainHeader');
+      const headerHeight = header.offsetHeight;
+      document.body.style.paddingTop = headerHeight + 'px';
+    }
+
+    window.addEventListener('load', updateBodyPadding);
+    window.addEventListener('resize', updateBodyPadding);
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        setTimeout(updateBodyPadding, 100);
+      } else {
+        updateBodyPadding();
+      }
+    });
+
+    // === HEADER SCROLL ===
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('mainHeader');
+      if (window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+
+    // === Menú hamburguesa ===
+    document.getElementById('hamburgerBtn').addEventListener('click', () => {
+      document.getElementById('mainNav').classList.toggle('active');
+      const spans = document.getElementById('hamburgerBtn').querySelectorAll('span');
+      if (document.getElementById('mainNav').classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(7px, 7px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+      } else {
+        spans[0].style.transform = 'rotate(0) translate(0, 0)';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'rotate(0) translate(0, 0)';
+      }
+    });
+
+      </script>
+</body>
+</html>
