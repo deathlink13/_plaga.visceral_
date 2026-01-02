@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MERCH – PLAGA VISCERAL</title>
+  <meta name="description" content="ROPA, ACCESORIOS Y OBJETOS INFECTADOS POR PLAGA VISCERAL. ENVÍOS A TODA LA REPÚBLICA.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;600;700&family=Metal+Mania&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    *, ::before, ::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* —— FONDO MATRIX —— */
+    #matrix-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: -1;
+      background: #000;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      font-weight: 500;
+      line-height: 1.7;
+      color: #fff;
+      background: #000;
+      overflow-x: hidden;
+      padding-top: 90px;
+      text-transform: uppercase;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    .text-center { text-align: center; }
+    .d-flex { display: flex; }
+    .justify-between { justify-content: space-between; }
+    .align-center { align-items: center; }
+    .flex-wrap { flex-wrap: wrap; }
+    .gap-1 { gap: 1rem; }
+    img { max-width: 100%; height: auto; }
+    a { text-decoration: none; color: inherit; }
+
+    /* —— Solo títulos y elementos destacados usan Metal Mania —— */
+    h1, h2, h3, h4, h5, h6,
+    .section-title,
+    .btn,
+    nav a,
+    .social-icon,
+    .disclaimer,
+    .terms,
+    .lightbox-btn {
+      font-family: 'Metal Mania', cursive;
+    }
+
+    /* —— Tamaños de fuente —— */
+    h1 { font-size: 3.4rem; }
+    h2 { font-size: 2.8rem; }
+    .section-title { font-size: 2.6rem; }
+    .btn, .lightbox-btn {
+      font-size: 1.6rem;
+      padding: 0.6rem 1.2rem;
+      font-weight: 700;
+    }
+    .merch-note p,
+    .terms p {
+      font-size: 1.5rem;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    /* —— HEADER —— */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 1rem 0;
+      border-bottom: 2px solid #0bff00;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      transition: all 0.3s;
+    }
+    header.scrolled {
+      padding: 8px 0;
+      background: rgba(0,0,0,0.95);
+    }
+    .header-top {
+      justify-content: space-between;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .social-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10%;
+      background: #69727d;
+      color: white;
+    }
+    .social-icon:hover {
+      transform: scale(1.1);
+    }
+    .social-icon.instagram {
+      background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    }
+
+    /* —— Menú hamburguesa —— */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 32px;
+      height: 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background: #0bff00;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    nav#mainNav ul {
+      list-style: none;
+      display: flex;
+      gap: 1.8rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    nav a {
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      color: #fff;
+      font-size: 1.5rem;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #0bff00;
+    }
+    nav a.active {
+      text-decoration: underline;
+      color: #fff;
+    }
+    nav a[href="proximamente.html"] {
+      color: #f8ee00 !important;
+    }
+    nav a[href="proximamente.html"]:hover {
+      color: #f8ee00 !important;
+      text-decoration: underline;
+    }
+
+    /* === GALERÍA MERCH === */
+    .merch-section {
+      padding: 3rem 0;
+      background: rgba(0,0,0,0.8);
+      position: relative;
+      z-index: 10;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      color: #0bff00;
+      text-shadow: 2px 2px 0 #000, -2px -2px 0 #000;
+    }
+
+    .merch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.8rem;
+      justify-content: center;
+    }
+
+    .merch-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      border: 2px solid #0bff00;
+      cursor: pointer;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .merch-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: contain;
+      background: #000;
+      border-radius: 8px;
+      display: block;
+    }
+
+    /* === LIGHTBOX === */
+    #lightbox-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 1rem;
+    }
+
+    #lightbox-content {
+      position: relative;
+      max-width: 95vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #lightbox-close {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      color: #0bff00;
+      font-size: 1.8rem;
+      cursor: pointer;
+    }
+
+    #lightbox-img {
+      max-width: 90vw;
+      max-height: 70vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border: 2px solid #0bff00;
+      border-radius: 10px;
+      display: block;
+      background: #000;
+    }
+
+    .lightbox-nav {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .lightbox-btn {
+      background: #0bff00;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lightbox-btn:hover {
+      background: #cc002e;
+      transform: translateY(-2px);
+    }
+
+    .merch-note {
+      margin-top: 1rem;
+      text-align: center;
+      color: #0bff00;
+      text-shadow: 1px 1px 0 #000;
+    }
+
+    /* === PAGO Y TÉRMINOS === */
+    .payment-section,
+    .terms-section {
+      padding: 3rem 0;
+      background: rgba(0,0,0,0.8);
+      text-align: center;
+    }
+
+    .payment-image {
+      max-width: 80%;
+      height: auto;
+      border: 2px solid #0bff00;
+      border-radius: 8px;
+      margin: 2rem auto;
+    }
+
+    .terms {
+      color: #0bff00;
+      text-shadow: 1px 1px 0 #000;
+      margin-top: 1rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* ✨ BOTÓN INSTAGRAM */
+    .btn {
+      background: #0bff00;
+      color: #000;
+      border-radius: 50px;
+      font-weight: bold;
+      text-shadow: 1px 1px 0 #000;
+      transition: all 0.3s;
+    }
+    .btn-instagram {
+      color: #f8ee00 !important;
+      text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+         0px  0px 4px #f8ee00;
+      transition: text-shadow 0.2s ease;
+    }
+    .btn-instagram:active {
+      text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000,
+         0px  0px 6px #00ff00;
+    }
+    .btn:hover:not(.btn-instagram) {
+      background: #cc002e;
+      transform: translateY(-3px);
+    }
+
+    /* === FOOTER === */
+    footer {
+      background: rgba(0,0,0,0.8);
+      padding: 2.5rem 0 1.5rem;
+      border-top: 1px solid #333;
+      position: relative;
+      z-index: 10;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 2rem;
+    }
+
+    footer h3 {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      color: #0bff00;
+    }
+
+    footer p, footer a {
+      line-height: 1.8;
+      color: #ddd;
+      font-size: 1.3rem;
+    }
+
+    .copyright {
+      text-align: center;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      body { padding-top: 80px; }
+      h1 { font-size: 2.6rem; }
+      h2 { font-size: 2.2rem; }
+      .section-title { font-size: 2rem; }
+      .merch-note p,
+      .terms p { font-size: 1.3rem; }
+      .merch-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+      .merch-item img { height: 160px; }
+      .hamburger { display: flex; }
+      nav#mainNav {
+        display: none;
+        width: 100%;
+        background: rgba(0,0,0,0.9);
+        padding: 1rem 0;
+        border-top: 1px solid #0bff00;
+        margin-top: 1rem;
+        text-align: center;
+      }
+      nav#mainNav.active { display: block; }
+      nav#mainNav ul {
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: center;
+      }
+      nav a {
+        font-size: 1.6rem;
+        padding: 0.7rem 0;
+      }
+      .payment-image { max-width: 95%; }
+      .lightbox-btn {
+        font-size: 1.3rem;
+        padding: 0.5rem 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 { font-size: 2.1rem; }
+      .section-title { font-size: 1.8rem; }
+      .merch-note p,
+      .terms p { font-size: 1.2rem; }
+      .merch-grid { grid-template-columns: 1fr; }
+      .merch-item img { height: 180px; }
+      .lightbox-btn {
+        font-size: 1.2rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fondo Matrix -->
+  <canvas id="matrix-bg"></canvas>
+
+  <!-- Header -->
+  <header id="mainHeader">
+    <div class="container">
+      <div class="d-flex justify-between align-center flex-wrap header-top">
+        <img src="wp-content/uploads/2023/08/bandera-mexico-1.png" alt="MÉXICO" width="55">
+        <img src="img/logo.png" alt="PLAGA VISCERAL" style="height: 60px; object-fit: contain;">
+        <div class="social-icons">
+          <a href="https://www.instagram.com/_plaga.visceral_/" target="_blank" class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+      <button class="hamburger" id="hamburgerBtn" aria-label="MENÚ">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="mainNav">
+        <ul>
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="merch.html" class="active">MERCH</a></li>
+          <li><a href="acerca/acerca.html">ACERCA</a></li>
+          <li><a href="proximamente.html">PRÓXIMAMENTE</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Lightbox -->
+  <div id="lightbox-overlay">
+    <div id="lightbox-content">
+      <div id="lightbox-close">✕</div>
+      <img id="lightbox-img" src="" alt="MERCH AMPLIADO">
+      <div class="lightbox-nav">
+        <button class="lightbox-btn" id="lightbox-prev">❮ ANTERIOR</button>
+        <button class="lightbox-btn" id="lightbox-next">SIGUIENTE ❯</button>
+      </div>
+      <div class="merch-note">
+        <p>SI GUSTAS ADQUIRIR UNA, CONTÁCTAME POR INSTAGRAM.<br>HACEMOS ENVÍOS A TODA LA REPÚBLICA.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MERCH -->
+  <section class="merch-section">
+    <div class="container">
+      <h2 class="section-title">INFECTA TU ESTILO</h2>
+      <div class="merch-grid">
+        <div class="merch-item" data-index="0">
+          <img src="img/merch/1.jpeg" alt="ARTÍCULO 1">
+        </div>
+        <div class="merch-item" data-index="1">
+          <img src="img/merch/2.jpeg" alt="ARTÍCULO 2">
+        </div>
+        <div class="merch-item" data-index="2">
+          <img src="img/merch/3.jpeg" alt="ARTÍCULO 3">
+        </div>
+        <div class="merch-item" data-index="3">
+          <img src="img/merch/4.jpeg" alt="ARTÍCULO 4">
+        </div>
+        <div class="merch-item" data-index="4">
+          <img src="img/merch/5.jpeg" alt="ARTÍCULO 5">
+        </div>
+        <div class="merch-item" data-index="5">
+          <img src="img/merch/6.jpeg" alt="ARTÍCULO 6">
+        </div>
+        <div class="merch-item" data-index="6">
+          <img src="img/merch/7.jpeg" alt="ARTÍCULO 7">
+        </div>
+        <div class="merch-item" data-index="7">
+          <img src="img/merch/8.jpeg" alt="ARTÍCULO 8">
+        </div>
+        <div class="merch-item" data-index="8">
+          <img src="img/merch/9.jpeg" alt="ARTÍCULO 9">
+        </div>
+        <div class="merch-item" data-index="9">
+          <img src="img/merch/10.jpeg" alt="ARTÍCULO 10">
+        </div>
+        <div class="merch-item" data-index="10">
+          <img src="img/merch/11.jpeg" alt="ARTÍCULO 11">
+        </div>
+        <div class="merch-item" data-index="11">
+          <img src="img/merch/12.jpeg" alt="ARTÍCULO 12">
+        </div>
+        <div class="merch-item" data-index="12">
+          <img src="img/merch/13.jpeg" alt="ARTÍCULO 13">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pago -->
+  <section class="payment-section">
+    <div class="container">
+      <img src="img/merch/pago1.jpg" alt="ACEPTAMOS TARJETAS: VISA, MASTERCARD, AMERICAN EXPRESS, MERCADO PAGO" class="payment-image">
+    </div>
+  </section>
+
+  <!-- Términos -->
+  <section class="terms-section">
+    <div class="container">
+      <div class="terms">
+        <p>EL ENVÍO CORRE POR CUENTA DEL CLIENTE. EL TIEMPO DE ENTREGA DEPENDE DEL SERVICIO DE PAQUETERÍA SELECCIONADO, ASÍ QUE TU MERCH LLEGARÁ TAN RÁPIDO (O TAN LENTO) COMO EL CAOS LO PERMITA.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>CONTACTO</h3>
+          <div class="social-icons" style="justify-content: flex-start; margin-top: 0.5rem;">
+            <a href="https://www.instagram.com/_plaga.visceral_/" target="_blank" class="social-icon instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3>HORARIO</h3>
+          <p>ATENCIÓN POR WHATSAPP<br>SIN CITA PREVIA</p>
+        </div>
+        <div>
+          <h3>SERVICIOS</h3>
+          <p>FLASH, FINE LINE,<br>TATUAJES RÁPIDOS Y ÚNICOS</p>
+        </div>
+      </div>
+      <div class="copyright">
+        &COPY; 2025 BY PLAGA VISCERAL
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // === MATRIX ===
+    const canvas = document.getElementById('matrix-bg');
+    const ctx = canvas.getContext('2d');
+    let fontSize = 16, columns, drops;
+    const codeString = `PLAGA\nVIS\nceral\nINFECTA\nALMA\nCAOS\nPUTREFACTO\n`;
+    const codeChars = codeString.split('');
+
+    function resizeMatrix() {
+      canvas.width = window.innerWidth;
+      canvas.height = document.body.scrollHeight;
+      columns = Math.floor(canvas.width / fontSize);
+      drops = Array(columns).fill(1);
+    }
+
+    window.addEventListener('resize', resizeMatrix);
+    resizeMatrix();
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00ff00';
+      ctx.font = fontSize + 'px monospace';
+      for (let i = 0; i < columns; i++) {
+        const text = codeChars[Math.floor(Math.random() * codeChars.length)];
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+        drops[i]++;
+      }
+      requestAnimationFrame(drawMatrix);
+    }
+    drawMatrix();
+
+    // === HEADER SCROLL ===
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('mainHeader');
+      if (window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+
+    // === Menú hamburguesa ===
+    document.getElementById('hamburgerBtn').addEventListener('click', () => {
+      document.getElementById('mainNav').classList.toggle('active');
+      const spans = document.getElementById('hamburgerBtn').querySelectorAll('span');
+      if (document.getElementById('mainNav').classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(7px, 7px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+      } else {
+        spans[0].style.transform = 'rotate(0) translate(0, 0)';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'rotate(0) translate(0, 0)';
+      }
+    });
+
+    // === Lightbox con navegación ===
+    const merchItems = document.querySelectorAll('.merch-item');
+    const lightbox = document.getElementById('lightbox-overlay');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const btnPrev = document.getElementById('lightbox-prev');
+    const btnNext = document.getElementById('lightbox-next');
+
+    // Array de rutas
+    const images = Array.from({length: 13}, (_, i) => `img/merch/${i + 1}.jpeg`);
+    let currentIndex = 0;
+
+    merchItems.forEach(item => {
+      item.addEventListener('click', () => {
+        currentIndex = parseInt(item.getAttribute('data-index'));
+        lightboxImg.src = images[currentIndex];
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    btnPrev.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      lightboxImg.src = images[currentIndex];
+    });
+
+    btnNext.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImg.src = images[currentIndex];
+    });
+
+    document.getElementById('lightbox-close').addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'Escape') {
+          lightbox.style.display = 'none';
+        } else if (e.key === 'ArrowLeft') {
+          btnPrev.click();
+        } else if (e.key === 'ArrowRight') {
+          btnNext.click();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
